@@ -1,0 +1,372 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    body {
+        height: 100%;
+        width: 100%;
+        background-color: $black;
+
+        .signup-container {
+            background: url("../images/stream_signin_background.jpg") no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .signup-page {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                flex-wrap: wrap;
+                max-width: 50rem;
+                min-width: 30rem;
+                padding: 2rem 3rem;
+                max-height: 100%;
+                background-color:$black;
+                opacity: 0.85;
+                border-radius: 0.5rem;
+
+                .logo {
+                    text-align: center;
+                }
+
+                h2 {
+                    color: white;
+                    text-align: center;
+                    margin: 1rem 0;
+                }
+                .register-form {
+                    width: 100%;
+                    .form-field {
+                        margin-bottom: 2rem;
+                        position:relative;
+
+                        .form-input {
+                            width: 100%;
+                            padding: 0.8rem;
+                            font-size: 1rem;
+                            background-color:black;
+                            color: #d3cccc;
+                            border: 1px solid gray;
+                            border-radius: 0.2rem;
+
+                            &:focus-visible {
+                                outline: none !important;
+                            }
+                        }
+
+                    }
+
+                    .submit-btn-container {
+                        display: flex;
+                        justify-content: center;
+
+                        .submit-btn {
+                            padding: 0.6rem;
+                            font-size: 1rem;
+                            width: 10rem;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                span {
+                    color: white;
+                    margin-top: 1rem;
+
+                    a {
+                        color:#ff0000;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+              
+            }
+        }
+
+        .home-container{
+
+            min-width: 1050px;
+            min-height: 100%;
+            background-color: $black;
+            position: absolute;
+
+            .error-banner {
+                color: $white;
+                position: absolute;
+                top: 25%;
+                width: 100%;
+                text-align: center;
+                font-size: 1.2rem;  
+            }
+
+            .preview-container {
+                position: relative;
+                display: flex;
+                .preview-image, .preview-video {
+                    width: 100%;
+                }
+
+                .preview-overlay {
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.3);
+                    position: absolute;
+                    box-shadow: inset 0 15px 17px -8px black, inset 0 -18px 17px -8px black;
+
+                    .preview-details {
+                        position: relative;
+                        top: 35%;
+                        margin-left: 3rem;
+                        display: flex;
+                        flex-direction: column;
+                        h3 {
+                            color: white;
+                            font-size: 3rem;
+                        }
+                        .preview-actions {
+                            .btn {
+                                margin: 2rem 1rem 2rem 0;
+                                height: 2.5rem;
+                                min-width: 8rem;
+                                font-size: 1rem;
+                                font-weight: bold;
+                                border: none;
+                                border-radius: 0.2rem;
+                                box-shadow: 1px 1px 10px inset #b8b8c3;
+                                opacity: 0.9;
+                                cursor: pointer;
+
+                                &:hover {
+                                    opacity: 1;
+                                }
+
+                                .fa-solid {
+                                    font-size: 1.2rem;
+                                    padding-right: 0.5rem;
+                                }
+
+                                &.info-btn {
+                                    min-width: 10rem;
+                                }
+                            }
+
+                            .vol-container {
+                                display: flex;
+                                justify-content: flex-start;
+
+                                button {
+                                    height: 3rem;
+                                    width: 3rem;
+                                    border-radius: 2rem;
+                                    border: none;
+                                    background-color: rgba(0,0,0,0.3);
+                                    color: white;
+                                    cursor: pointer;
+
+                                    .fa-solid {
+                                        font-size: 1.2rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.small {
+                    width: 230px;
+                    height: 130px;
+                    margin-right: 4px;
+                    display: inline-flex;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                }
+
+            }
+
+            .preview-categories {
+                margin: 0 3rem;
+
+                .category {
+                    display:flex;
+                    flex-direction: column;
+                    padding: 1rem 0;
+
+                    a{
+                        h3 {
+                            color: #e5e5e5;
+                            padding-bottom: 1rem;
+
+                            &:hover {
+                                color: white;
+                            }
+                        }
+                    }
+
+                    // .entities {
+                    //     overflow-x: auto;
+                    //     overflow-y: hidden;
+                    //     white-space: nowrap;
+                    // }
+                
+                }
+            }
+
+            .season {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 50px;
+
+                h3 {
+                    color: $white;
+                    padding-bottom: 1rem;
+                }
+
+                .videos {
+                    // overflow-x: auto;
+                    // overflow-y: hidden;
+                    // white-space: nowrap;
+
+                    .episode-container {
+                        display: inline-flex;
+                        justify-content: center;
+                        margin-right: 4px;
+
+                        .contents {
+                            display: flex;
+                            flex-direction: column;
+                            width: 230px;
+
+                            img {
+                                width: 230px;
+                                height: 130px;
+                                object-fit: cover;
+                            }
+
+                            .video-info {
+                                max-height: 200px;
+                                overflow: auto;
+
+                                span {
+                                    display: inline-block;
+                                }
+
+                                h4, span {
+                                    color: $white;
+                                    width: 100%;
+                                    white-space:normal;
+                                    padding: 1rem 0;
+                                }
+                            }   
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.errorMssg {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background-color: #ff0000;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+// .errorMssg::before {
+//     content: '';
+//     position: absolute;
+//     top: -6px;
+//     left: 8px;
+//     min-width: 100%;
+//     height: 1px;
+//     background-color: red;
+// }
+
+.errorMssg::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent red transparent;
+}
+
+// .preview-category.noScroll .category .entities {
+//     white-space: normal;
+// }
+
+//Info Modal style
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    color: $white;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: #1b1a1a;
+    width: 50%; 
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    p {
+        padding: 1rem 0;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+.close {
+    color: rgb(143, 138, 138);
+    float: right;
+    font-size: 25px;
+    background-color: #1b1a1a;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(229, 220, 220);
+    cursor: pointer;
+}
