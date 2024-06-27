@@ -10,7 +10,4 @@ require_once("includes/header.php");
 ?>
 
 <div class="watch-container">
-    <video controls autoplay>
-        <source src='<?php echo $video->getFilePath(); ?>' type="video/mp4">
-    </video>
 </div>
