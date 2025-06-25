@@ -10,11 +10,16 @@ class Video {
         if(is_array($input)) {
             $this->sqlData = $input;
         } else {
-            $query = $this->con->prepare("SELECT * FROM entities WHERE id=:id");
+            $query = $this->con->prepare("SELECT * FROM videos WHERE id=:id");
             $query->bindValue(":id", $input);
             $query->execute();
 
-            $this->sqlData = $query->fetch(PDO:: FETCH_ASSOC);
+            $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
+        }
+
+        if (!$this->sqlData) {
+            error_log("No rows found in 'entities' table for id: " . $input);
+            throw new Exception("Video not found for ID: $input");
         }
 
         $this->entity = new Entity($con, $this->sqlData["entityId"]); 
@@ -44,10 +49,33 @@ class Video {
         return $this->sqlData["episode"];
     }
 
+    public function getSeasonNumber() {
+        return $this->sqlData["season"];
+    }
+
+    public function getEntityId() {
+        return $this->sqlData["entityId"];
+    }
+
     public function incrementViews() {
         $query = $this->con->prepare("UPDATE videos SET views=views+1 WHERE id=:id");
         $query->bindValue(":id", $this->getId());
         $query->execute();
+    }
+
+    public function getSeasonAndEpisode() {
+        if($this->isMovie()) {
+            return;
+        }
+
+        $season = $this->getSeasonNumber();
+        $episode = $this->getEpisodeNumber();
+
+        return "Season $season, Episode $episode";
+    }
+
+    public function isMovie() {
+        return $this->sqlData["isMovie"] == 1;
     }
 }
 

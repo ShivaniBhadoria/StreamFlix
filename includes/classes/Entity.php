@@ -13,7 +13,7 @@ class Entity {
             $query->bindValue(":id", $input);
             $query->execute();
 
-            $this->sqlData = $query->fetch(PDO:: FETCH_ASSOC);
+            $this->sqlData = $query->fetch(PDO::FETCH_ASSOC);
         }
     }
 
